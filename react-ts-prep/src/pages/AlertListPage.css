@@ -1,0 +1,25 @@
+.container {
+    padding: 2rem;
+    background-color: '#F7F7F7';
+
+    display: flex;
+    flex-flow: column;
+
+    gap: 1.5rem;
+}
+
+.heading {
+    border: 1px solid black;
+    border-radius: 18px;
+}
+
+.heading h1 {
+    text-align: center;
+}
+
+.search-filter_container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}

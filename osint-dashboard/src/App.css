@@ -1,0 +1,113 @@
+.card {
+    padding: 2em;
+}
+
+.app {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 16px;
+    color: #1976d2;
+    font-size: 24px;
+}
+
+.stats {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: #e3f2fd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 150px 80px 80px 120px 1fr;
+    gap: 16px;
+    padding: 12px 16px;
+    background: #1976d2;
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 4px 4px 0 0;
+}
+
+.table-header span {
+    text-align: left;
+}
+
+.table-header span:nth-child(2),
+.table-header span:nth-child(3) {
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    padding: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 150px 80px 80px 120px 1fr;
+    gap: 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+    font-size: 14px;
+    background: white;
+    transition: background 0.2s;
+}
+
+.row:hover {
+    background: #f5f5f5;
+}
+
+.row.high-risk {
+    background: #ffebee;
+}
+
+.row.high-risk:hover {
+    background: #ffcdd2;
+}
+
+.row .ip {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+.row .country {
+    text-align: center;
+    font-weight: 600;
+}
+
+.row .risk {
+    font-weight: 700;
+    text-align: center;
+}
+
+.row.high-risk .risk {
+    color: #d32f2f;
+}
+
+.row .category {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    background: #e3f2fd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.row .timestamp {
+    color: #666;
+    font-size: 12px;
+}

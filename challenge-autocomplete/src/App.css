@@ -1,0 +1,21 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+}
+
+.app h1 {
+    margin: 0;
+    font-size: 48px;
+}
+
+.app p {
+    margin: 0;
+    opacity: 0.9;
+}
