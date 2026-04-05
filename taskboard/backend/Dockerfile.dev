@@ -1,0 +1,8 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+COPY tsconfig.json ./
+RUN npm install
+RUN npm install -g ts-node-dev    # ts-node avec watch intégré
+EXPOSE 4000
+CMD ["ts-node-dev", "--respawn", "--transpile-only", "src/index.ts"]
