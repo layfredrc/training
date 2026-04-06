@@ -1,0 +1,46 @@
+# version : version du format docker-compose
+# 3.9 = format moderne avec support des healthchecks, secrets, etc.
+version: "3.9"
+
+# services : liste des containers à orchestrer
+services:
+  # 'backend' = nom du service (utilisable pour communiquer entre containers)
+  backend:
+    # build : construire l'image depuis un Dockerfile local
+    # './backend' = le dossier qui contient le Dockerfile
+    build: ./backend
+
+    # ports : mapping host:container
+    # '8000:8000' = port 8000 du host → port 8000 du container
+    # Si tu voulais éviter un conflit : '8001:8000' (accès sur localhost:8001)
+    ports:
+      - "8000:8000"
+
+    # volumes : partage de fichiers entre host et container
+    # './backend:/app' = le dossier ./backend sur ton ordi = /app dans le container
+    # Effet : quand tu modifies un fichier .py, Django le voit immédiatement
+    # C'est le hot-reload côté backend
+    volumes:
+      - ./backend:/app
+
+    # environment : variables d'environnement injectées dans le container
+    # Préférable à coder en dur dans le code source
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-h+d4(+gqdh9f!98=%q-^v*a%1at$lyd&+o2ok3^#^n6o8$7i#+
+
+    # command : surcharge le CMD du Dockerfile
+    # Utile pour avoir des comportements différents dev/prod sans changer le Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app # ← hot-reload React : tes fichiers locaux dans le container
+      - /app/node_modules # ← TRICK IMPORTANT : voir explication ci-dessous
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+    depends_on:
+      - backend # ← démarre backend avant frontend
